@@ -1,9 +1,9 @@
 package com.fun.project.controller;
 
+import com.fun.common.result.CommonResult;
 import com.fun.common.utils.gen.CodeGeneratorTool;
 import com.fun.project.entity.ClassInfo;
 import com.fun.project.entity.GenTableColumn;
-import com.fun.project.entity.ReturnT;
 import com.fun.project.service.IGenTableColumnService;
 
 import com.fun.common.utils.gen.FreemarkerTool;
@@ -32,8 +32,8 @@ public class IndexController {
 
     @Autowired
     private FreemarkerTool freemarkerTool;
-
-    private IGenTableColumnService IGenTableColumnService;
+    @Autowired
+    private IGenTableColumnService genTableColumnService;
 
     @GetMapping("/")
     public String index() {
@@ -42,11 +42,11 @@ public class IndexController {
 
     @RequestMapping("/codeGenerate")
     @ResponseBody
-    public ReturnT<Map<String, String>> codeGenerate(String tableSql) {
+    public CommonResult codeGenerate(String tableSql) {
 
         try {
             if (StringUtils.isBlank(tableSql)) {
-                return new ReturnT<>(ReturnT.FAIL_CODE, "表结构信息不可为空");
+                return CommonResult.failed("表结构信息不可为空");
             }
 
             // parse table
@@ -78,11 +78,10 @@ public class IndexController {
                 }
             }
             logger.info("生成代码行数：{}", lineNum);
-
-            return new ReturnT<>(result);
+            return CommonResult.success(result);
         } catch (IOException | TemplateException e) {
             logger.error(e.getMessage(), e);
-            return new ReturnT<>(ReturnT.FAIL_CODE, "表结构解析失败");
+            return CommonResult.failed("表结构解析失败");
         }
 
     }

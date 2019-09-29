@@ -3,6 +3,7 @@ package com.fun.project.entity;
 
 import com.fun.common.constant.GenConstants;
 import com.fun.common.utils.StringUtils;
+import com.fun.framework.web.entity.BaseEntity;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author U-Fun
  */
-public class GenTable {
+public class GenTable extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -248,4 +249,5 @@ public class GenTable {
     public static boolean isCrud(String tplCategory) {
         return tplCategory != null && StringUtils.equals(GenConstants.TPL_CRUD, tplCategory);
     }
+
 }
