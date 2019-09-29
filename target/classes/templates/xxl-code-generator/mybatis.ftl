@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Dao路径.${classInfo.className}Dao">
+<mapper namespace="mapper路径.${classInfo.className}Mapper">
 
-    <resultMap id="${classInfo.className}" type="Model路径.${classInfo.className}" >
+    <resultMap id="${classInfo.className}Result" type="${classInfo.className}" >
     <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
     <#list classInfo.fieldList as fieldItem >
         <result column="${fieldItem.columnName}" property="${fieldItem.fieldName}" />
@@ -11,72 +11,86 @@
     </#if>
     </resultMap>
 
-    <sql id="Base_Column_List">
-    <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-    <#list classInfo.fieldList as fieldItem >
-        `${fieldItem.columnName}`<#if fieldItem_has_next>,</#if>
-    </#list>
-    </#if>
+    <sql id="select${classInfo.className}ByVo">
+        <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
+        <#list classInfo.fieldList as fieldItem >${fieldItem.columnName}<#if fieldItem_has_next>,</#if></#list>
+        </#if>
     </sql>
 
-    <insert id="insert" parameterType="java.util.Map" >
-        INSERT INTO ${classInfo.tableName} (
-        <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-        <#list classInfo.fieldList as fieldItem >
+    <insert id="insert${classInfo.className}" parameterType="${classInfo.className}" useGeneratedKeys="true" keyProperty="userId" >
+        INSERT INTO ${classInfo.tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
+            <#list classInfo.fieldList as fieldItem >
+                <#if fieldItem.columnName != "Id" >
+                <if test="${fieldItem.fieldName} != null  and ${fieldItem.fieldName} != ''">${fieldItem.columnName}<#if fieldItem_has_next>,</#if> </if>
+                </#if>
+            </#list>
+            </#if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
+            <#list classInfo.fieldList as fieldItem >
             <#if fieldItem.columnName != "Id" >
-            `${fieldItem.columnName}`<#if fieldItem_has_next>,</#if>
+                <#if fieldItem.columnName="AddTime" || fieldItem.columnName="UpdateTime" >
+                NOW()<#if fieldItem_has_next>,</#if>
+                <#else>
+                <if test="${fieldItem.fieldName} != null  and ${fieldItem.fieldName} != ''">${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if></if>
+                </#if>
             </#if>
-        </#list>
-        </#if>
-        )
-        VALUES(
-        <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-        <#list classInfo.fieldList as fieldItem >
-        <#if fieldItem.columnName != "Id" >
-            <#if fieldItem.columnName="AddTime" || fieldItem.columnName="UpdateTime" >
-            NOW()<#if fieldItem_has_next>,</#if>
-            <#else>
-            ${r"#{"}${classInfo.className?uncap_first}.${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>
+            </#list>
             </#if>
-        </#if>
-        </#list>
-        </#if>
-        )
+        </trim>
     </insert>
 
-    <delete id="delete" parameterType="java.util.Map" >
-        DELETE FROM ${classInfo.tableName}
-        WHERE `id` = ${r"#{id}"}
-    </delete>
-
-    <update id="update" parameterType="java.util.Map" >
+    <update id="update${classInfo.className}" parameterType="${classInfo.className}" >
         UPDATE ${classInfo.tableName}
-        SET
-        <#list classInfo.fieldList as fieldItem >
-        <#if fieldItem.columnName != "Id" && fieldItem.columnName != "AddTime" && fieldItem.columnName != "UpdateTime" >
-            ${fieldItem.columnName} = ${r"#{"}${classInfo.className?uncap_first}.${fieldItem.fieldName}${r"}"},
-        </#if>
-        </#list>
-            UpdateTime = NOW()
-        WHERE `id` = ${r"#{"}${classInfo.className?uncap_first}.id${r"}"}
+        <trim prefix="SET" suffixOverrides=",">
+            <#list classInfo.fieldList as fieldItem >
+            <#if fieldItem.columnName != "Id" && fieldItem.columnName != "AddTime" && fieldItem.columnName != "UpdateTime" >
+                <if test="${fieldItem.fieldName} != null  and ${fieldItem.fieldName} != ''">${fieldItem.columnName} = ${r"#{"}${fieldItem.fieldName}${r"}"},</if>
+            </#if>
+            </#list>
+        </trim>
+        WHERE  表中主键 = ${r"#{"}重命名后的表主键${r"}"}
     </update>
 
+    <delete id="delete${classInfo.className}ById" parameterType="Integer">
+        DELETE FROM
+        WHERE  表中主键 = ${r"#{重命名后的表主键}"}
+    </delete>
 
-    <select id="load" parameterType="java.util.Map" resultMap="${classInfo.className}">
-        SELECT <include refid="Base_Column_List" />
-        FROM ${classInfo.tableName}
-        WHERE `id` = ${r"#{id}"}
+    <delete id="delete${classInfo.className}List" parameterType="String">
+        delete from ${classInfo.tableName} where 表中唯一字段 in
+        <foreach item="item" collection="ids" open="(" separator="," close=")">
+            ${r"#{item}"}
+        </foreach>
+    </delete>
+
+    <select id="select${classInfo.className}ById" parameterType="Integer" resultMap="${classInfo.className}Result">
+        SELECT <include refid="select${classInfo.className}ByVo" />
+        FROM  ${classInfo.tableName}
+        WHERE 表主键 = ${r"#{重命名后的表主键}"}
     </select>
 
-    <select id="pageList" parameterType="java.util.Map" resultMap="${classInfo.className}">
-        SELECT <include refid="Base_Column_List" />
+    <select id="select${classInfo.className}List" parameterType="${classInfo.className}" resultMap="${classInfo.className}Result">
+        select
+        <include refid="select${classInfo.className}ByVo"/>  from ${classInfo.tableName}
+       <#-- <where>
+            <if test="loginName != null  and loginName != ''">login_name like concat('%', #{loginName}, '%')</if>
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+        </where>-->
+    </select>
+
+ <#--   <select id="pageList" parameterType="${classInfo.className}" resultMap="${classInfo.className}Result">
+        SELECT <include refid="select${classInfo.className}ByVo" />
         FROM ${classInfo.tableName}
         LIMIT ${r"#{offset}"}, ${r"#{pagesize}"}
     </select>
 
-    <select id="pageListCount" parameterType="java.util.Map" resultType="int">
+    <select id="pageListCount" parameterType="${classInfo.className}" resultType="int">
         SELECT count(1)
         FROM ${classInfo.tableName}
-    </select>
+    </select>-->
 
 </mapper>

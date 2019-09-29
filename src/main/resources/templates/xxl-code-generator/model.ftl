@@ -13,7 +13,8 @@ import java.util.Date;
 /**
 *  ${classInfo.classComment}
 *
-*  Created by DJun on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
+*  Created by U-Fun on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
+*  desc:
 */
 public class ${classInfo.className} implements Serializable {
     private static final long serialVersionUID = 42L;

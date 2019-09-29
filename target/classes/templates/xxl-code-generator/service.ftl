@@ -3,33 +3,44 @@ import java.util.Map;
 /**
 * ${classInfo.classComment}
 *
-* Created by DJun on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
+* Created by U-Fun on '${.now?string('yyyy-MM-dd HH:mm:ss')}'.
+* desc:
 */
 public interface ${classInfo.className}Service {
 
     /**
     * 新增
     */
-    public ReturnT<String> insert(${classInfo.className} ${classInfo.className?uncap_first});
+    int insert${classInfo.className}(${classInfo.className} ${classInfo.className?uncap_first});
 
     /**
     * 删除
     */
-    public ReturnT<String> delete(int id);
+    int delete${classInfo.className}ById(int userId);
+
+    /**
+    * 批量删除
+    */
+    int delete${classInfo.className}List(String ids);
 
     /**
     * 更新
     */
-    public ReturnT<String> update(${classInfo.className} ${classInfo.className?uncap_first});
+    int update${classInfo.className}(${classInfo.className} ${classInfo.className?uncap_first});
 
     /**
-    * Load查询
+    * 查询
     */
-    public ${classInfo.className} load(int id);
+    ${classInfo.className} select${classInfo.className}ById(int userId);
 
     /**
+    * 分页条件查询
+    */
+    List<${classInfo.className}> select${classInfo.className}List(${classInfo.className} ${classInfo.className?uncap_first},int pageNum,int pageSize);
+
+  <#--  /**
     * 分页查询
     */
-    public Map<String,Object> pageList(int offset, int pagesize);
-
+    Map<String,Object> pageList(int offset, int pagesize);
+-->
 }

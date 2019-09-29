@@ -61,7 +61,7 @@ CREATE TABLE `userinfo` (
 
                                 <li><a href="#model" data-toggle="tab">Model</a></li>
                                 <li><a href="#mybatis" data-toggle="tab">Mybatis</a></li>
-                                <li><a href="#dao" data-toggle="tab">Dao</a></li>
+                                <li><a href="#dao" data-toggle="tab">Mapper</a></li>
                                 <li><a href="#service_impl" data-toggle="tab">ServiceImpl</a></li>
                                 <li><a href="#service" data-toggle="tab">Service</a></li>
                                 <li class="active" ><a href="#controller" data-toggle="tab">Controller</a></li>
@@ -85,7 +85,7 @@ CREATE TABLE `userinfo` (
                                 </div>
                                 <div class="chart tab-pane active" id="dao">
                                     <div class="box-body">
-                                        Dao：<textarea id="dao_ide" ></textarea>
+                                        Mapper：<textarea id="dao_ide" ></textarea>
                                     </div>
                                 </div>
                                 <div class="chart tab-pane active" id="mybatis">
@@ -100,7 +100,6 @@ CREATE TABLE `userinfo` (
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
 
