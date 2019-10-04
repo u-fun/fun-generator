@@ -2,52 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7263573-0313-47dc-9f8c-67713801e9c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/entity.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fun-generator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fun-generator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/FunGeneratorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/FunGeneratorApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/common/exception/CodeGenerateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/common/exception/CodeGenerateException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/common/utils/gen/CodeGeneratorTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/common/utils/gen/CodeGeneratorTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/common/utils/gen/TableParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/common/utils/gen/TableParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/project/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/ClassInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/FieldInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/GenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/GenTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/GenTableColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fun/project/entity/GenTableColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/mapper/GenTableColumnMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/mapper/GenTableMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/service/GenTableColumnServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/service/GenTableServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/service/IGenTableColumnService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fun/project/service/IGenTableService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/tool/GenTableColumnMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/tool/GenTableMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/controller.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/controller.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/entity.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/entity.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/mapper.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/mapper.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/model.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/mybatis.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/mybatis.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/service.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/service.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/service_impl.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xxl-code-generator/service_impl.ftl" afterDir="false" />
     </list>
@@ -160,7 +119,7 @@
       <workItem from="1569986493413" duration="27863000" />
       <workItem from="1570081399224" duration="2197000" />
       <workItem from="1570084046495" duration="12455000" />
-      <workItem from="1570161954522" duration="1191000" />
+      <workItem from="1570161954522" duration="1467000" />
     </task>
     <task id="LOCAL-00001" summary="🍊修复代码生成后部分接口不能使用的问题">
       <created>1569756134396</created>
@@ -176,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569757409439</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="🛠FunBoot定制版">
+      <created>1570163278767</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1570163278767</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -207,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修复代码生成后部分接口不能使用的问题" />
     <MESSAGE value="解决了返回类的局限性" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决了返回类的局限性" />
+    <MESSAGE value="FunBoot定制版" />
+    <option name="LAST_COMMIT_MESSAGE" value="FunBoot定制版" />
   </component>
 </project>

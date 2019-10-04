@@ -8,7 +8,7 @@ import java.util.List;
  * ${classInfo.classComment}
  *
  * @author u-fun
- * @date '${.now?string('yyyy-MM-dd')}'
+ * @date ${.now?string('yyyy/MM/dd')}
  */
 public interface ${classInfo.className}Mapper {
 

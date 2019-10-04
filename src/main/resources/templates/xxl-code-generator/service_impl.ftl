@@ -10,7 +10,7 @@ import java.util.Map;
  * ${classInfo.classComment}
  *
  * @author u-fun
- * @date '${.now?string('yyyy-MM-dd')}'
+ * @date ${.now?string('yyyy/MM/dd')}
  */
 @Service
 public class ${classInfo.className}ServiceImpl implements ${classInfo.className}Service {

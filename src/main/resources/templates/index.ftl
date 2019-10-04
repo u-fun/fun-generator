@@ -16,7 +16,6 @@
 <#-- header -->
 <@netCommon.commonHeader />
 
-
     <#-- content -->
     <div class="content-wrapper">
         <div class="container">
@@ -39,10 +38,10 @@
                                     <li>
                                         <small class="text-muted" >
                                             <textarea id="tableSql" placeholder="请输入表结构信息..." >
-CREATE TABLE `userinfo` (
+CREATE TABLE `ums_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` varchar(255) NOT NULL COMMENT '用户名',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息'
                                             </textarea>

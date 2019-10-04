@@ -18,7 +18,7 @@ import java.util.Date;
  * ${classInfo.classComment}
  *
  * @author u-fun
- * @date '${.now?string('yyyy-MM-dd')}'
+ * @date ${.now?string('yyyy/MM/dd')}
  */
 @Getter
 @Setter
