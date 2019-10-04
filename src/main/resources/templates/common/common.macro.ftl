@@ -2,7 +2,6 @@
 
 <#-- favicon -->
 <link rel="icon" href="favicon.ico" />
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
@@ -43,10 +42,8 @@
 <script src="${request.contextPath}/static/adminlte/dist/js/app.min.js"></script>
 <#-- jquery.slimscroll -->
 <script src="${request.contextPath}/static/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-
 <#-- layer -->
 <script src="${request.contextPath}/static/plugins/layer/layer.js"></script>
-
 <script src="${request.contextPath}/static/js/common.1.js"></script>
 
 </#macro>
@@ -56,7 +53,7 @@
     <nav class="navbar navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="${request.contextPath}/" class="navbar-brand"><b>Fun Code Generator</b></a>
+                <a href="#" class="navbar-brand"><b>Fun Code Generator</b></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -66,12 +63,6 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a target="_blank" href="http://www.xuxueli.com/xxl-code-generator/">官方文档</a>
-                        <#--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="hidden-xs">表结构</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="${request.contextPath}/">XXX</a></li>
-                        </ul>-->
                     </li>
                 </ul>
             </div>
@@ -85,7 +76,7 @@
 <#macro commonFooter >
 <footer class="main-footer">
     <div class="container">
-        Powered by <b>XXL Code Generator</b> v0.0.2
+        Powered by <b>XXL Code Generator</b> v1.0.2
         <div class="pull-right hidden-xs">
             <strong>Copyright &copy; 2018-${.now?string('yyyy')} &nbsp;
                 <a href="http://mrdjun.github.io/" target="_blank" >DJun</a>
