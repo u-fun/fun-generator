@@ -59,7 +59,7 @@ CREATE TABLE `userinfo` (
                             <ul class="nav nav-tabs pull-right">
                                 <li class="pull-left header">生成代码</li>
 
-                                <li><a href="#model" data-toggle="tab">Model</a></li>
+                                <li><a href="#model" data-toggle="tab">Entity</a></li>
                                 <li><a href="#mybatis" data-toggle="tab">Mybatis</a></li>
                                 <li><a href="#dao" data-toggle="tab">Mapper</a></li>
                                 <li><a href="#service_impl" data-toggle="tab">ServiceImpl</a></li>

@@ -4,6 +4,9 @@ package com.fun.project.entity;
 import com.fun.common.constant.GenConstants;
 import com.fun.common.utils.StringUtils;
 import com.fun.framework.web.entity.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -14,8 +17,25 @@ import java.util.List;
  *
  * @author U-Fun
  */
+@Getter
+@Setter
+@ToString
 public class GenTable extends BaseEntity {
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 表主键
+     */
+    private String primaryKey;
+    /**
+     * 主键转驼峰
+     */
+    private String conversionPrimaryKey;
+
+    /**
+     * 字段列表
+     */
+    private List<GenTableColumn> fieldList;
 
     /**
      * 编号
@@ -39,6 +59,12 @@ public class GenTable extends BaseEntity {
      */
     @NotBlank(message = "实体类名称不能为空")
     private String className;
+
+    /**
+     * 实体类描述
+     */
+    @NotBlank(message = "实体类描述不能为空")
+    private String classComment;
 
     /**
      * 使用的模板（crud单表操作 tree树表操作）
@@ -86,6 +112,7 @@ public class GenTable extends BaseEntity {
     @Valid
     private List<GenTableColumn> columns;
 
+
     /**
      * 其它生成选项
      */
@@ -105,134 +132,6 @@ public class GenTable extends BaseEntity {
      * 树名称字段
      */
     private String treeName;
-
-    public Long getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(Long tableId) {
-        this.tableId = tableId;
-    }
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public String getTableComment() {
-        return tableComment;
-    }
-
-    public void setTableComment(String tableComment) {
-        this.tableComment = tableComment;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getTplCategory() {
-        return tplCategory;
-    }
-
-    public void setTplCategory(String tplCategory) {
-        this.tplCategory = tplCategory;
-    }
-
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
-    }
-
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
-    }
-
-    public String getBusinessName() {
-        return businessName;
-    }
-
-    public void setBusinessName(String businessName) {
-        this.businessName = businessName;
-    }
-
-    public String getFunctionName() {
-        return functionName;
-    }
-
-    public void setFunctionName(String functionName) {
-        this.functionName = functionName;
-    }
-
-    public String getFunctionAuthor() {
-        return functionAuthor;
-    }
-
-    public void setFunctionAuthor(String functionAuthor) {
-        this.functionAuthor = functionAuthor;
-    }
-
-    public GenTableColumn getPkColumn() {
-        return pkColumn;
-    }
-
-    public void setPkColumn(GenTableColumn pkColumn) {
-        this.pkColumn = pkColumn;
-    }
-
-    public List<GenTableColumn> getColumns() {
-        return columns;
-    }
-
-    public void setColumns(List<GenTableColumn> columns) {
-        this.columns = columns;
-    }
-
-    public String getOptions() {
-        return options;
-    }
-
-    public void setOptions(String options) {
-        this.options = options;
-    }
-
-    public String getTreeCode() {
-        return treeCode;
-    }
-
-    public void setTreeCode(String treeCode) {
-        this.treeCode = treeCode;
-    }
-
-    public String getTreeParentCode() {
-        return treeParentCode;
-    }
-
-    public void setTreeParentCode(String treeParentCode) {
-        this.treeParentCode = treeParentCode;
-    }
-
-    public String getTreeName() {
-        return treeName;
-    }
-
-    public void setTreeName(String treeName) {
-        this.treeName = treeName;
-    }
 
     public boolean isTree() {
         return isTree(this.tplCategory);

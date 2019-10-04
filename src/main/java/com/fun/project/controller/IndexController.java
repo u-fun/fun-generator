@@ -2,9 +2,8 @@ package com.fun.project.controller;
 
 import com.fun.common.result.CommonResult;
 import com.fun.common.utils.gen.CodeGeneratorTool;
-import com.fun.project.entity.ClassInfo;
+import com.fun.project.entity.GenTable;
 import com.fun.project.entity.GenTableColumn;
-import com.fun.project.service.IGenTableColumnService;
 
 import com.fun.common.utils.gen.FreemarkerTool;
 import freemarker.template.TemplateException;
@@ -32,8 +31,6 @@ public class IndexController {
 
     @Autowired
     private FreemarkerTool freemarkerTool;
-    @Autowired
-    private IGenTableColumnService genTableColumnService;
 
     @GetMapping("/")
     public String index() {
@@ -50,14 +47,11 @@ public class IndexController {
             }
 
             // parse table
-            ClassInfo classInfo = CodeGeneratorTool.processTableIntoClassInfo(tableSql);
-            System.out.println(classInfo.getTableName());
-            GenTableColumn genTableColumn=new GenTableColumn();
-            //tableService.insertGenTableColumn(classInfo.getTableName());
+            GenTable genTable= CodeGeneratorTool.processTableIntoClassInfo(tableSql);
 
             // code genarete
             Map<String, Object> params = new HashMap<>();
-            params.put("classInfo", classInfo);
+            params.put("classInfo", genTable);
 
             // result
             Map<String, String> result = new HashMap<>();
@@ -65,10 +59,9 @@ public class IndexController {
             result.put("controller_code", freemarkerTool.processString("xxl-code-generator/controller.ftl", params));
             result.put("service_code", freemarkerTool.processString("xxl-code-generator/service.ftl", params));
             result.put("service_impl_code", freemarkerTool.processString("xxl-code-generator/service_impl.ftl", params));
-
             result.put("dao_code", freemarkerTool.processString("xxl-code-generator/mapper.ftl", params));
             result.put("mybatis_code", freemarkerTool.processString("xxl-code-generator/mybatis.ftl", params));
-            result.put("model_code", freemarkerTool.processString("xxl-code-generator/model.ftl", params));
+            result.put("model_code", freemarkerTool.processString("xxl-code-generator/entity.ftl", params));
 
             // 计算,生成代码行数
             int lineNum = 0;
@@ -83,6 +76,5 @@ public class IndexController {
             logger.error(e.getMessage(), e);
             return CommonResult.failed("表结构解析失败");
         }
-
     }
 }

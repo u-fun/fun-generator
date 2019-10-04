@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="fun-generator" options="-parameters" />
+      <module name="fun-generator" options="" />
     </option>
   </component>
 </project>

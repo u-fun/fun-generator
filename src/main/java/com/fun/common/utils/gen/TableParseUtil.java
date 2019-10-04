@@ -2,8 +2,8 @@ package com.fun.common.utils.gen;
 
 import com.fun.common.exception.CodeGenerateException;
 import com.fun.common.utils.StringUtils;
-import com.fun.project.entity.ClassInfo;
-import com.fun.project.entity.FieldInfo;
+import com.fun.project.entity.GenTable;
+import com.fun.project.entity.GenTableColumn;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  */
 public class TableParseUtil {
 
-    public static ClassInfo processTableIntoClassInfo(String tableSql) throws IOException {
+    public static GenTable processTableIntoClassInfo(String tableSql) throws IOException {
         if (tableSql == null || tableSql.trim().length() == 0) {
             throw new CodeGenerateException("Table structure can not be empty.");
         }
@@ -42,10 +42,6 @@ public class TableParseUtil {
 
         // class Name
         String className = StringUtils.upperCaseFirst(StringUtils.underlineToCamelCase(tableName));
-        if (className.contains("_")) {
-            className = className.replaceAll("_", "");
-        }
-
         // class Comment
         String classComment = "";
         if (tableSql.contains("COMMENT=")) {
@@ -58,15 +54,34 @@ public class TableParseUtil {
             }
         }
 
+        // PRIMARY Key
+        String key = "";
+        if (tableSql.contains("KEY")) {
+            key = tableSql.substring(tableSql.indexOf("KEY")+3);
+        } else if (tableSql.contains("key")) {
+            key = tableSql.substring(tableSql.indexOf("key")+3);
+        } else {
+            //throw new CodeGenerateException("Table structure anomaly.");
+            key = tableSql.substring(tableSql.indexOf("(")+1, tableSql.indexOf(","));
+            if (key.contains("`")) {
+                key = key.substring(key.indexOf("`") + 1, key.lastIndexOf("`"));
+            }
+        }
+
+        if (key.contains("(")) {
+            key = key.substring(key.indexOf("(") + 1, key.lastIndexOf(")"));
+        }
+        if (key.contains("`")) {
+            key = key.substring(key.indexOf("`") + 1, key.lastIndexOf("`"));
+        }
+        //System.out.println("::::"+key);
+        String ConversionKey=StringUtils.toCamelCase(key);
         // field List
-        List<FieldInfo> fieldList = new ArrayList<>();
-
+        List<GenTableColumn> fieldList = new ArrayList<>();
         String fieldListTmp = tableSql.substring(tableSql.indexOf("(") + 1, tableSql.lastIndexOf(")"));
-
         // replave "," by "，" in comment
         Matcher matcher = Pattern.compile("\\ COMMENT '(.*?)\\'").matcher(fieldListTmp);     // "\\{(.*?)\\}"
         while (matcher.find()) {
-
             String commentTmp = matcher.group();
             commentTmp = commentTmp.replaceAll("\\ COMMENT '|\\'", "");      // "\\{|\\}"
 
@@ -133,7 +148,7 @@ public class TableParseUtil {
                         fieldComment = commentTmp;
                     }
 
-                    FieldInfo fieldInfo = new FieldInfo();
+                    GenTableColumn fieldInfo = new GenTableColumn();
                     fieldInfo.setColumnName(columnName);
                     fieldInfo.setFieldName(fieldName);
                     fieldInfo.setFieldClass(fieldClass);
@@ -148,13 +163,28 @@ public class TableParseUtil {
             throw new CodeGenerateException("Table structure anomaly.");
         }
 
-        ClassInfo codeJavaInfo = new ClassInfo();
-        codeJavaInfo.setTableName(tableName);
-        codeJavaInfo.setClassName(className);
-        codeJavaInfo.setClassComment(classComment);
-        codeJavaInfo.setFieldList(fieldList);
-
-        return codeJavaInfo;
+        GenTable genTable=new GenTable();
+        genTable.setTableName(tableName);
+        String updateClassName="";
+        int index=0;
+        if (tableName.contains("_")){
+            String[] strArr = tableName.split("_");
+            System.out.println(strArr.length);
+            for (int i = 1; i < strArr.length; ++i){
+                index++;
+                if(index==1)
+                    updateClassName=StringUtils.upperCaseFirst(strArr[i]);
+                if(index>1)
+                    updateClassName=updateClassName+StringUtils.upperCaseFirst(strArr[i]);
+            }
+        }else {
+            updateClassName=className;
+        }
+        genTable.setClassName(updateClassName);
+        genTable.setClassComment(classComment);
+        genTable.setFieldList(fieldList);
+        genTable.setPrimaryKey(key);
+        genTable.setConversionPrimaryKey(ConversionKey);
+        return genTable;
     }
-
 }

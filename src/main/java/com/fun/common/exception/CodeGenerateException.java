@@ -1,8 +1,8 @@
 package com.fun.common.exception;
 
 /**
- * created by DJun on 2019/8/10 23:24
- * desc: 生成代码如遇问题抛异常
+ * 生成代码如遇问题抛异常
+ * @author DJun
  */
 public class CodeGenerateException extends RuntimeException {
     private static final long serialVersionUID = 42L;
