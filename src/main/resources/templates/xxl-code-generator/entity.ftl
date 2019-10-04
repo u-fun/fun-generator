@@ -30,12 +30,12 @@ public class ${classInfo.className} extends BaseEntity {
     /**
      * ${fieldItem.fieldComment}
      */
-    <#if fieldItem.fieldClass=='int' && index==0>
-        private Long ${fieldItem.fieldName};
-        <#assign index=1 />
-    <#else>
-        private ${fieldItem.fieldClass} ${fieldItem.fieldName};
-    </#if>
+<#if fieldItem.fieldClass=='int' && index==0>
+    private Long ${fieldItem.fieldName};
+    <#assign index=1 />
+<#else>
+    private ${fieldItem.fieldClass} ${fieldItem.fieldName};
+</#if>
 </#list>
 </#if>
 
