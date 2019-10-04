@@ -1,2 +1,3 @@
-# fun-generator
-🍊代码生成工具
+# Fun-Generator
+🍊Fun-Boot定制版代码生成工具
+
